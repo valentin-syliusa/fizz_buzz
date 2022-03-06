@@ -52,6 +52,28 @@ class InputFragment : Fragment() {
                 }
             }
         }
+
+        binding.int1Valueinputview.onInputChange = { updatedInt1Value ->
+            viewModel.updateInt1Input(updatedInt1Value)
+        }
+        binding.int2Valueinputview.onInputChange = { updatedInt2Value ->
+            viewModel.updateInt2Input(updatedInt2Value)
+        }
+        binding.limitValueinputview.onInputChange = { updatedLimitValue ->
+            viewModel.updateLimitInput(updatedLimitValue)
+        }
+        binding.str1Valueinputview.onInputChange = { updatedStr1Value ->
+            viewModel.updateStr1Input(updatedStr1Value)
+        }
+        binding.str2Valueinputview.onInputChange = { updatedStr2Value ->
+            viewModel.updateStr2Input(updatedStr2Value)
+        }
+
+        binding.validateButton.setOnClickListener {
+            //TODO -> Navigate to result screen
+        }
+
+        viewModel.loadData()
     }
 
     override fun onDestroyView() {

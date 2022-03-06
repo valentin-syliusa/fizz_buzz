@@ -35,6 +35,10 @@ class InputViewModel @Inject constructor(): ViewModel() {
 
     private var inputData = InputData()
 
+    fun loadData() {
+        updateState()
+    }
+
     fun updateInt1Input(inputAsString: String) {
         inputData = inputData.copy(
             int1 = inputAsString.toIntOrNull()
@@ -83,8 +87,8 @@ class InputViewModel @Inject constructor(): ViewModel() {
                 isInt1Valid = inputData.int1 != null,
                 isInt2Valid = inputData.int2 != null,
                 isLimitValid = inputData.limit != null,
-                isStr1Valid = inputData.str1 != null,
-                isStr2Valid = inputData.str2 != null
+                isStr1Valid = !inputData.str1.isNullOrEmpty(),
+                isStr2Valid = !inputData.str2.isNullOrEmpty()
             )
         }
     }
