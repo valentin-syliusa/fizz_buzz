@@ -11,7 +11,8 @@ class InputFragment : Fragment() {
 
     private var _binding: InputLayoutBinding? = null
 
-    private val binding: InputLayoutBinding = _binding!!
+    private val binding: InputLayoutBinding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
