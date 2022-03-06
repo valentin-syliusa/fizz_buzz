@@ -41,17 +41,20 @@ class ResultFragment: Fragment() {
             it?.let { state ->
                 when (state) {
                     is State.DataLoaded -> {
+                        //We update our RecyclerView when results have been properly loaded
                         resultRecyclerViewAdapter.results = state.results
                     }
                 }
             }
         }
 
+        //Set our RecyclerView's settings
         with(binding.resultsRecyclerview) {
             layoutManager = LinearLayoutManager(context)
             adapter = resultRecyclerViewAdapter
         }
 
+        //We try to retrieve passed argument or pop back if arguments couldn't be properly loaded
         arguments?.let { argumentsSafe ->
             val inputData = ResultFragmentArgs.fromBundle(argumentsSafe)
             viewModel.loadData(

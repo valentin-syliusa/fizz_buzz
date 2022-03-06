@@ -3,6 +3,10 @@ package com.aranegav.fizzbuzz.domain.input.usecase
 import com.aranegav.fizzbuzz.domain.input.model.Input
 import javax.inject.Inject
 
+/**
+ * Use case we'll use to retrieve our results from a given Input
+ */
+
 class GetResultFromInput @Inject constructor() {
     fun perform(input: Input): List<String> {
         //We generate a list of String that'll be our result

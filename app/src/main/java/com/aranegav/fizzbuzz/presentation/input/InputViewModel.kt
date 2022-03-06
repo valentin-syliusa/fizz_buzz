@@ -6,6 +6,10 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+/**
+ * Model used to store temporary input data
+ */
+
 data class InputData(
     val int1: Int? = null,
     val int2: Int? = null,
@@ -13,6 +17,10 @@ data class InputData(
     val str1: String? = null,
     val str2: String? = null,
 )
+
+/**
+ * Our View's State
+ */
 
 sealed class State {
     data class InvalidInput(
@@ -44,6 +52,10 @@ class InputViewModel @Inject constructor() : ViewModel() {
     fun loadData() {
         updateState()
     }
+
+    /*
+    Methods to update our InputData
+     */
 
     fun updateInt1Input(inputAsString: String) {
         inputData = inputData.copy(
@@ -82,6 +94,7 @@ class InputViewModel @Inject constructor() : ViewModel() {
 
     private fun updateState() {
         val inputData = inputData
+        //Check if fields are valid (not null for int, not null nor empty for strings) and notify through a new State
         state.value = if (inputData.int1 != null &&
             inputData.int2 != null &&
             inputData.limit != null &&

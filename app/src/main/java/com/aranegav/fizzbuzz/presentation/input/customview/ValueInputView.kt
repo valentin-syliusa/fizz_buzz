@@ -13,6 +13,10 @@ enum class InputType {
     NUMBER
 }
 
+/**
+ * Custom View used to let the user type a value of a given type (Text or Number) and return the input as a String
+ */
+
 class ValueInputView(context: Context, attributeSet: AttributeSet? = null) :
     ConstraintLayout(context, attributeSet) {
 
@@ -27,6 +31,7 @@ class ValueInputView(context: Context, attributeSet: AttributeSet? = null) :
     var inputType: InputType = InputType.TEXT
         set(value) {
             field = value
+            //Update our EditText's settings following the input type we want to select
             binding.inputEdittext.text.clear()
             binding.inputEdittext.inputType = when (value) {
                 InputType.TEXT -> android.text.InputType.TYPE_CLASS_TEXT
@@ -58,6 +63,7 @@ class ValueInputView(context: Context, attributeSet: AttributeSet? = null) :
             attributes.recycle()
         }
 
+        //When text change, notify through the onInputChange listener
         binding.inputEdittext.addTextChangedListener { updatedText ->
             onInputChange?.invoke(updatedText.toString())
         }

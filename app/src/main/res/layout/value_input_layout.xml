@@ -33,7 +33,7 @@
         android:textColor="@color/primaryText"
         android:textColorHint="@color/tertiaryText"
         android:backgroundTint="@color/secondarySystem"
-        android:hint="Entrez votre valeur"/>
+        android:hint="@string/type_value"/>
 
     <TextView
         android:id="@+id/status_textview"

@@ -15,8 +15,12 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -30,6 +34,8 @@ android {
 }
 
 dependencies {
+
+    //Test dependencies
     implementation 'javax.inject:javax.inject:1'
     testImplementation 'junit:junit:4.13.2'
 }

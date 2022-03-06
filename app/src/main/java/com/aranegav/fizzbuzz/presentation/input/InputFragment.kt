@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.aranegav.fizzbuzz.R
 import com.aranegav.fizzbuzz.databinding.InputFragmentLayoutBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,30 +38,35 @@ class InputFragment : Fragment() {
             it?.let { state ->
                 when (state) {
                     is State.InvalidInput -> {
+                        //Update state text for each field if their value is valid or invalid
                         binding.int1Valueinputview.stateText =
-                            if (state.isInt1Valid) "Donnée valide" else "Donnée invalide"
+                            if (state.isInt1Valid) getString(R.string.valid_input) else getString(R.string.invalid_input)
                         binding.int2Valueinputview.stateText =
-                            if (state.isInt2Valid) "Donnée valide" else "Donnée invalide"
+                            if (state.isInt2Valid) getString(R.string.valid_input) else getString(R.string.invalid_input)
                         binding.limitValueinputview.stateText =
-                            if (state.isLimitValid) "Donnée valide" else "Donnée invalide"
+                            if (state.isLimitValid) getString(R.string.valid_input) else getString(R.string.invalid_input)
                         binding.str1Valueinputview.stateText =
-                            if (state.isStr1Valid) "Donnée valide" else "Donnée invalide"
+                            if (state.isStr1Valid) getString(R.string.valid_input) else getString(R.string.invalid_input)
                         binding.str2Valueinputview.stateText =
-                            if (state.isStr2Valid) "Donnée valide" else "Donnée invalide"
+                            if (state.isStr2Valid) getString(R.string.valid_input) else getString(R.string.invalid_input)
+                        //Button is disabled until all fields are valid
                         binding.validateButton.isEnabled = false
                     }
                     is State.ValidInput -> {
-                        binding.int1Valueinputview.stateText = "Donnée valide"
-                        binding.int2Valueinputview.stateText = "Donnée valide"
-                        binding.limitValueinputview.stateText = "Donnée valide"
-                        binding.str1Valueinputview.stateText = "Donnée valide"
-                        binding.str2Valueinputview.stateText = "Donnée valide"
+                        //Update state text for all fields to notify that their value is valid
+                        binding.int1Valueinputview.stateText = getString(R.string.valid_input)
+                        binding.int2Valueinputview.stateText = getString(R.string.valid_input)
+                        binding.limitValueinputview.stateText = getString(R.string.valid_input)
+                        binding.str1Valueinputview.stateText = getString(R.string.valid_input)
+                        binding.str2Valueinputview.stateText = getString(R.string.valid_input)
+                        //Button is enabled when all fields are valid
                         binding.validateButton.isEnabled = true
                     }
                 }
             }
         }
 
+        //Set onInputChange listeners for each fields
         binding.int1Valueinputview.onInputChange = { updatedInt1Value ->
             viewModel.updateInt1Input(updatedInt1Value)
         }
@@ -78,6 +84,7 @@ class InputFragment : Fragment() {
         }
 
         binding.validateButton.setOnClickListener {
+            //When button is clicked, we retrieve our latest state, that must be "ValidInput" to pass InputData to next Fragment
             (viewModel.observableState.value as? State.ValidInput)?.let { inputData ->
                 findNavController().navigate(InputFragmentDirections.presentResults(
                     int1 = inputData.int1,
@@ -92,6 +99,7 @@ class InputFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        //Reload data each time Fragment is resumed
         viewModel.loadData()
     }
 
