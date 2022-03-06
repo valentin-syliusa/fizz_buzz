@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.addTextChangedListener
 import com.aranegav.fizzbuzz.R
 import com.aranegav.fizzbuzz.databinding.ValueInputLayoutBinding
 
@@ -55,6 +56,10 @@ class ValueInputView(context: Context, attributeSet: AttributeSet? = null) :
                 inputType = InputType.values()[it]
             }
             attributes.recycle()
+        }
+
+        binding.inputEdittext.addTextChangedListener { updatedText ->
+            onInputChange?.invoke(updatedText.toString())
         }
     }
 }
