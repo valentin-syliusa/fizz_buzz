@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.FizzBuzz" parent="Theme.MaterialComponents.DayNight">
         <item name="colorPrimary">@color/primarySystem</item>
+        <item name="colorAccent">@color/secondarySystem</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>

@@ -31,7 +31,8 @@
         app:layout_constraintTop_toBottomOf="@id/header_textview"
         android:layout_marginTop="5dp"
         android:textColor="@color/primaryText"
-        android:textColorHint="@color/secondaryText"
+        android:textColorHint="@color/tertiaryText"
+        android:backgroundTint="@color/secondarySystem"
         android:hint="Entrez votre valeur"/>
 
     <TextView

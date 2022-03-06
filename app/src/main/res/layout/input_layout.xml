@@ -44,7 +44,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/header_textview"
                 android:layout_marginTop="25dp"
-                app:header="Int1"/>
+                app:header="Int1"
+                app:inputType="number"/>
 
             <com.aranegav.fizzbuzz.presentation.input.customview.ValueInputView
                 android:id="@+id/int2_valueinputview"
@@ -54,7 +55,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/int1_valueinputview"
                 android:layout_marginTop="10dp"
-                app:header="Int2"/>
+                app:header="Int2"
+                app:inputType="number"/>
 
             <com.aranegav.fizzbuzz.presentation.input.customview.ValueInputView
                 android:id="@+id/limit_valueinputview"
@@ -64,7 +66,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/int2_valueinputview"
                 android:layout_marginTop="10dp"
-                app:header="Limit"/>
+                app:header="Limit"
+                app:inputType="number"/>
 
             <com.aranegav.fizzbuzz.presentation.input.customview.ValueInputView
                 android:id="@+id/str1_valueinputview"
@@ -74,7 +77,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/limit_valueinputview"
                 android:layout_marginTop="10dp"
-                app:header="Str1"/>
+                app:header="Str1"
+                app:inputType="text"/>
 
             <com.aranegav.fizzbuzz.presentation.input.customview.ValueInputView
                 android:id="@+id/str2_valueinputview"
@@ -84,7 +88,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/str1_valueinputview"
                 android:layout_marginTop="10dp"
-                app:header="Str2"/>
+                app:header="Str2"
+                app:inputType="text"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
