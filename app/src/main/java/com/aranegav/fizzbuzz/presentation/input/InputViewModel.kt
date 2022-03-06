@@ -85,8 +85,8 @@ class InputViewModel @Inject constructor() : ViewModel() {
         state.value = if (inputData.int1 != null &&
             inputData.int2 != null &&
             inputData.limit != null &&
-            inputData.str1 != null &&
-            inputData.str2 != null
+            !inputData.str1.isNullOrEmpty() &&
+            !inputData.str2.isNullOrEmpty()
         ) {
             State.ValidInput(inputData.int1,
                 inputData.int2,

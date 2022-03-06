@@ -9,7 +9,7 @@
         android:id="@+id/inputFragment"
         android:name="com.aranegav.fizzbuzz.presentation.input.InputFragment"
         android:label="InputFragment"
-        tools:layout="@layout/input_layout">
+        tools:layout="@layout/input_fragment_layout">
         <action
             android:id="@+id/presentResults"
             app:destination="@id/resultFragment"

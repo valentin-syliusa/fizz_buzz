@@ -99,7 +99,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/str2_valueinputview"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/rounded_primary_background_background"
+                android:background="@drawable/primary_background_button_background"
                 android:textColor="@color/secondaryText"
                 android:textAllCaps="false"
                 android:text="Valider"/>

@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.aranegav.fizzbuzz.databinding.InputLayoutBinding
+import com.aranegav.fizzbuzz.databinding.InputFragmentLayoutBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InputFragment : Fragment() {
 
-    private var _binding: InputLayoutBinding? = null
+    private var _binding: InputFragmentLayoutBinding? = null
 
-    private val binding: InputLayoutBinding
+    private val binding: InputFragmentLayoutBinding
         get() = _binding!!
 
     private val viewModel: InputViewModel by viewModels()
@@ -23,7 +25,7 @@ class InputFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val binding = InputLayoutBinding.inflate(inflater, container, false)
+        val binding = InputFragmentLayoutBinding.inflate(inflater, container, false)
         _binding = binding
         return binding.root
     }
@@ -48,6 +50,11 @@ class InputFragment : Fragment() {
                         binding.validateButton.isEnabled = false
                     }
                     is State.ValidInput -> {
+                        binding.int1Valueinputview.stateText = "Donnée valide"
+                        binding.int2Valueinputview.stateText = "Donnée valide"
+                        binding.limitValueinputview.stateText = "Donnée valide"
+                        binding.str1Valueinputview.stateText = "Donnée valide"
+                        binding.str2Valueinputview.stateText = "Donnée valide"
                         binding.validateButton.isEnabled = true
                     }
                 }
