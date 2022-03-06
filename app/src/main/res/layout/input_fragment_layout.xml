@@ -34,7 +34,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="Saisissez vos données"/>
+                android:text="@string/fill_fields"/>
 
             <com.aranegav.fizzbuzz.presentation.input.customview.ValueInputView
                 android:id="@+id/int1_valueinputview"
@@ -92,16 +92,17 @@
                 app:inputType="text"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/validate_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/str2_valueinputview"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/rounded_primary_background_background"
+                android:background="@drawable/primary_background_button_background"
                 android:textColor="@color/secondaryText"
                 android:textAllCaps="false"
-                android:text="Valider"/>
+                android:text="@string/validate"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.addTextChangedListener
 import com.aranegav.fizzbuzz.R
 import com.aranegav.fizzbuzz.databinding.ValueInputLayoutBinding
 
@@ -11,6 +12,10 @@ enum class InputType {
     TEXT,
     NUMBER
 }
+
+/**
+ * Custom View used to let the user type a value of a given type (Text or Number) and return the input as a String
+ */
 
 class ValueInputView(context: Context, attributeSet: AttributeSet? = null) :
     ConstraintLayout(context, attributeSet) {
@@ -26,6 +31,7 @@ class ValueInputView(context: Context, attributeSet: AttributeSet? = null) :
     var inputType: InputType = InputType.TEXT
         set(value) {
             field = value
+            //Update our EditText's settings following the input type we want to select
             binding.inputEdittext.text.clear()
             binding.inputEdittext.inputType = when (value) {
                 InputType.TEXT -> android.text.InputType.TYPE_CLASS_TEXT
@@ -55,6 +61,11 @@ class ValueInputView(context: Context, attributeSet: AttributeSet? = null) :
                 inputType = InputType.values()[it]
             }
             attributes.recycle()
+        }
+
+        //When text change, notify through the onInputChange listener
+        binding.inputEdittext.addTextChangedListener { updatedText ->
+            onInputChange?.invoke(updatedText.toString())
         }
     }
 }

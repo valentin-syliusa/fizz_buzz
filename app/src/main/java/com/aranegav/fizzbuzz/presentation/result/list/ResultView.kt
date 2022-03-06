@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.aranegav.fizzbuzz.databinding.ResultLayoutBinding
 
+/**
+ * Custom View used to display a result
+ */
+
 class ResultView(context: Context, attributeSet: AttributeSet? = null) :
     ConstraintLayout(context, attributeSet) {
 
