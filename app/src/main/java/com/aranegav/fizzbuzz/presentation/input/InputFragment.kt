@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.aranegav.fizzbuzz.databinding.InputLayoutBinding
 
 class InputFragment : Fragment() {
@@ -70,9 +71,20 @@ class InputFragment : Fragment() {
         }
 
         binding.validateButton.setOnClickListener {
-            //TODO -> Navigate to result screen
+            (viewModel.observableState.value as? State.ValidInput)?.let { inputData ->
+                findNavController().navigate(InputFragmentDirections.presentResults(
+                    int1 = inputData.int1,
+                    int2 = inputData.int2,
+                    limit = inputData.limit,
+                    str1 = inputData.str1,
+                    str2 = inputData.str2
+                ))
+            }
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
         viewModel.loadData()
     }
 

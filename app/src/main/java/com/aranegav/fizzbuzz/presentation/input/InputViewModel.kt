@@ -23,11 +23,17 @@ sealed class State {
         val isStr2Valid: Boolean,
     ) : State()
 
-    object ValidInput : State()
+    data class ValidInput(
+        val int1: Int,
+        val int2: Int,
+        val limit: Int,
+        val str1: String,
+        val str2: String,
+    ) : State()
 }
 
 @HiltViewModel
-class InputViewModel @Inject constructor(): ViewModel() {
+class InputViewModel @Inject constructor() : ViewModel() {
 
     private val state = MutableLiveData<State>()
 
@@ -75,13 +81,18 @@ class InputViewModel @Inject constructor(): ViewModel() {
     }
 
     private fun updateState() {
+        val inputData = inputData
         state.value = if (inputData.int1 != null &&
             inputData.int2 != null &&
             inputData.limit != null &&
             inputData.str1 != null &&
             inputData.str2 != null
         ) {
-            State.ValidInput
+            State.ValidInput(inputData.int1,
+                inputData.int2,
+                inputData.limit,
+                inputData.str1,
+                inputData.str2)
         } else {
             State.InvalidInput(
                 isInt1Valid = inputData.int1 != null,
